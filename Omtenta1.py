@@ -28,7 +28,7 @@ def main():
             continue
 
         if category not in Omtenta2.CAT:
-            print("Invalid field, enter one of the available fields.")
+            print("Ogiltigt fält, ange ett av ovannämnda fält.")
             continue
 
         category = Omtenta2.CAT[category]

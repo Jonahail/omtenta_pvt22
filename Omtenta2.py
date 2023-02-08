@@ -4,7 +4,7 @@ HELP_STRING = """
 Ange ett år och fält
 Exempelvis: 1965 fysik
 
-Till exempel: 1965 physics
+Till exempel: 1965 fysik
 
 Fält: fysik, kemi, litteratur, ekonomi, fred, medicin
 
@@ -21,7 +21,7 @@ CAT = {"fysik": "phy",
 
 
 def get_nobel_prizes(year, category):
-    """ hämtar nobelprisvinnare, från år och inom vilken katgori"""
+    """ hämtar katalog med nobelprisvinnare, från år och inom vilken katgori"""
 
     params = {"nobelPrizeYear": year, "nobelPrizeCategory": category}
     res = requests.get("http://api.nobelprize.org/2.1/nobelPrizes", params=params).json()
@@ -33,9 +33,10 @@ def print_winners(winners):
 
     for i, winner in enumerate(winners):
         print("-" * 10)
-        print(f"{winner['categoryFullName']['se']} Prize")
-        print(f"Amount: {winner['prizeAmount']} SEK")
-        print("Winners:")
+        print(f"{winner['categoryFullName']['se']} ")
+        print(f"Prissumma: {winner['prizeAmount']} SEK")
+
+        print("Vinnare:")
         for j, laureate in enumerate(winner["laureates"]):
             print(laureate['knownName']['en'])
             print(f"Motivation: {laureate['motivation']['en']}")
@@ -47,5 +48,5 @@ def print_summary(year, category, year_sum, num_winners):
     """hämtar en summering av år, kategori, antal år, och antal vinnare"""
 
     print("=" * 10)
-    print(f"Total prize amount for {category} in year {year}: {year_sum} SEK")
-    print(f"Number of winners: {num_winners}")
+    print(f"Totala pris summan för {category} år {year}: {year_sum} SEK")
+    print(f"Antal vinnare: {num_winners}")
